@@ -1,0 +1,12 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+dependencies {
+    implementation 'org.apache.httpcomponents:httpclient'
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+    implementation 'org.springframework.shell:spring-shell-starter:2.0.1.RELEASE'
+}

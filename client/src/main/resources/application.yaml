@@ -1,0 +1,12 @@
+logging:
+  level:
+    root: INFO
+  pattern:
+    console: '%d{"yyyy/MM/dd HH:mm:ss,SSS"} [%p] - %msg%n'
+
+app:
+  clientId: client2
+  serverRestAddress: http://localhost:8080/gateway
+  serverWebSocketAddress: ws://localhost:8080/ws
+  demo1Count: 1000
+  demo1Symbol: AAPL
