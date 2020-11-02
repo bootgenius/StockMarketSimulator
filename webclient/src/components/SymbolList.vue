@@ -43,13 +43,6 @@
 
         watch: {
             selectedItem: function (newValue) {
-                // if (_.isEmpty(newValue) && !_.isEmpty(oldValue)) {
-                //     this.selectedItem = oldValue;
-                // }
-                // else if (_.isEmpty(newValue) && !_.isEmpty(this.items)) {
-                //     this.selectedItem = this.items[0];
-                // }
-
                 this.$emit('selectedItemChanged', newValue);
             },
 
