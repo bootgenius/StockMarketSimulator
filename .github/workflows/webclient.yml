@@ -24,3 +24,8 @@ jobs:
     - name: Build
       working-directory: ./webclient
       run: npm run build
+    - name: Publish webclient jar
+      uses: actions/upload-artifact@v2
+      with:
+        name: webclient
+        path: webclient/dist
