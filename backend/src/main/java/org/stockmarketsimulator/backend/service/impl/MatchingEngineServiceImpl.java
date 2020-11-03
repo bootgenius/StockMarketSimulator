@@ -1,7 +1,5 @@
 package org.stockmarketsimulator.backend.service.impl;
 
-import javafx.util.Pair;
-import org.apache.juli.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.stockmarketsimulator.backend.domain.*;
@@ -117,7 +115,7 @@ public class MatchingEngineServiceImpl implements MatchingEngineService {
 
         return orders.stream()
                 .filter(Objects::nonNull)
-                .collect(groupingBy(o -> new Pair<>(o.getType(), o.getPrice())))
+                .collect(groupingBy(o -> new AbstractMap.SimpleEntry<>(o.getType(), o.getPrice())))
                 .entrySet()
                 .stream()
                 .map(e -> new OrderBookItem(e.getKey().getKey(), e.getKey().getValue(), e.getValue().stream().mapToInt(Order::getQuantity).sum()))
@@ -168,7 +166,7 @@ public class MatchingEngineServiceImpl implements MatchingEngineService {
                 synchronized (orderBooksService) {
                     List<Order> orders = new ArrayList<>(orderBooksService.getOrders());
 
-                    Pair<Order, Order> matchingOrders;
+                    AbstractMap.SimpleEntry<Order, Order> matchingOrders;
                     do {
                         matchingOrders = getMatchingOrders(orders);
                         if (matchingOrders != null) {
@@ -237,7 +235,7 @@ public class MatchingEngineServiceImpl implements MatchingEngineService {
         }
     }
 
-    private Pair<Order, Order> getMatchingOrders(Collection<Order> orders) {
+    private AbstractMap.SimpleEntry<Order, Order> getMatchingOrders(Collection<Order> orders) {
         List<Order> buyOrdersSorted = orders.stream()
                 .filter(o -> OrderType.BUY.equals(o.getType()))
                 .sorted((o1, o2) -> {
@@ -260,7 +258,7 @@ public class MatchingEngineServiceImpl implements MatchingEngineService {
                     .filter(so -> buyOrder.getPrice() >= so.getPrice())
                     .collect(Collectors.toList());
             if (matchingSellOrders.size() > 0) {
-                return new Pair<>(buyOrder, sellOrdersSorted.get(0));
+                return new AbstractMap.SimpleEntry<>(buyOrder, sellOrdersSorted.get(0));
             }
         }
         return null;
