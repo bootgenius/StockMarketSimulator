@@ -68,6 +68,7 @@ By default clientId for the web application is "client1"<br>
 - npm installed<br>
 - nodejs installed<br>
 
+**How to build and run:**
 ```
 cd ./webclient/
 npm install
