@@ -11,11 +11,10 @@ The solution consists of 3 projects:
 3. Webclient - the web client based on Vuejs and Vuetify framework
 
 ## Backend
-The backend project is a Spring Boot application that contains main logic to create/cancel orders, balancing the books and executing trades.<br>
+The backend project is a Spring Boot application that contains main logic for creating/deleting orders, balancing the books, and executing trades.<br>
 Application has a websocket support to send logs about server events to client applications
 
-The backend project is a Spring Boot application that contains main logic for creating/deleting orders, balancing the books, and executing trades.<br>
-* Application has a REST API to get consume request from the clients
+* Application has a REST API to consume requests from the clients
 * REST API endpoint: http://localhost:8080/gateway
 * Application has WebSocket support to send server events to client applications
 * WebSocket endpoint: ws://localhost:8080/ws
