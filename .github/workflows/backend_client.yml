@@ -24,10 +24,10 @@ jobs:
     - name: Publish backend jar
       uses: actions/upload-artifact@v2
       with:
-        name: backend.jar
+        name: backend
         path: backend/build/libs/backend.jar
     - name: Publish client jar
       uses: actions/upload-artifact@v2
       with:
-        name: client.jar
+        name: client
         path: client/build/libs/client.jar
