@@ -1,4 +1,4 @@
-name: Build backend and console client
+name: Build webclient
 
 on:
   push:
