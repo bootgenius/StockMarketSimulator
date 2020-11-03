@@ -21,6 +21,6 @@ jobs:
     - name: Install Packages
       working-directory: ./webclient
       run: npm install
-    - name: Install Packages
+    - name: Build
       working-directory: ./webclient
       run: npm run build
