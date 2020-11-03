@@ -21,3 +21,13 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
+    - name: Upload backend jar
+      uses: actions/upload-artifact@v2
+      with:
+        name: backend.jar
+        path: backend/build/libs/backend.jar
+    - name: Upload client jar
+      uses: actions/upload-artifact@v2
+      with:
+        name: client.jar
+        path: client/build/libs/client.jar
