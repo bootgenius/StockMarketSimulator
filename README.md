@@ -1,7 +1,7 @@
 # StockMarketSimulator
 
 This project emulates stock market<br>
-Clients of the stock market will interact with it using through a REST and WebSocket API.<br>
+Clients of the stock market will interact with it using a REST and WebSocket API.<br>
 Task description for this project can be found [HERE](https://github.com/BootGenius/StockMarketSimulator/blob/main/docs/TaskDescription.pdf) <br>
 Demo video can be found [HERE](https://youtu.be/Ykd8YTh0Rvc) <br>
 <br>
