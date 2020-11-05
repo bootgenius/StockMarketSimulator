@@ -120,6 +120,32 @@ public class ShellCommands {
         }
     }
 
+    @ShellMethod(value = "Demo 2", key = "demo2")
+    public String demo2() {
+        try {
+            String symbol = "GOOGL";
+            int price = 5;
+            int quantity = 1;
+            int iterationsCount = 500;
+
+            for(int i = 0; i < iterationsCount; i ++) {
+                for(int j = 0; j < 10; j ++) {
+                    sendPostRequest("/addOrder", createAddParameters(symbol, OrderType.B, quantity, price));
+                }
+                sendPostRequest("/addOrder", createAddParameters(symbol, OrderType.S, 9, price));
+            }
+            sendPostRequest("/addOrder", createAddParameters(symbol, OrderType.S, iterationsCount, price));
+
+            Thread.sleep(10000);
+
+            return OK_RESPONSE;
+        } catch (Exception ex) {
+            logger.error("An error occurred while executing demo1 method", ex);
+            return ERROR_RESPONSE;
+        }
+    }
+
+
     //endregion
 
     //region Private Methods

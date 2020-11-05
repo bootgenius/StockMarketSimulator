@@ -140,13 +140,10 @@ public class MatchingEngineServiceImpl implements MatchingEngineService {
         try {
             for (String symbol : bookServices.keySet()) {
                 OrderBooksService orderBooksService = bookServices.get(symbol);
+                    new ArrayList<>(orderBooksService.getOrders()).stream()
+                            .filter(o -> o != null && OrderType.BUY.equals(o.getType()))
+                            .max(Comparator.comparingInt(Order::getPrice)).ifPresent(orderWithMaxPrice -> orderBooksService.addPriceHistory(LocalDateTime.now(), orderWithMaxPrice.getPrice()));
 
-                Order orderWithMaxPrice = orderBooksService.getOrders().stream()
-                        .filter(o -> OrderType.BUY.equals(o.getType()))
-                        .max(Comparator.comparingInt(Order::getPrice)).orElse(null);
-                if (orderWithMaxPrice != null) {
-                    orderBooksService.addPriceHistory(LocalDateTime.now(), orderWithMaxPrice.getPrice());
-                }
                 gatewayCallback.sendPriceHistoryChanged(symbol);
             }
         } catch (Exception ex) {

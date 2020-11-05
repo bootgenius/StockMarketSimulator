@@ -17,7 +17,7 @@ public class OrderBooksServiceImpl implements OrderBooksService {
     //region Fields
     private Map<LocalDateTime, Integer> priceHistory = new ConcurrentHashMap<>();
 
-    private final List<Order> orders = new ArrayList<>();
+    private final List<Order> orders = Collections.synchronizedList(new ArrayList<>());
 
     private final IdGenerator idGenerator = new IdGenerator();
 
